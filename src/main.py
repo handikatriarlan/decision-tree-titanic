@@ -12,7 +12,6 @@ def load_data(train_file, test_file):
     return train_data, test_data
 
 def handle_missing_data(train_data, test_data):
-    # Fill missing values in both train and test datasets
     for dataset in [train_data, test_data]:
         dataset['Age'] = dataset['Age'].fillna(dataset['Age'].median())
         dataset['Fare'] = dataset['Fare'].fillna(dataset['Fare'].median())
@@ -22,22 +21,17 @@ def handle_missing_data(train_data, test_data):
     return train_data, test_data
 
 def feature_engineering(data):
-    # Convert 'Sex' to binary values
     data['Sex'] = data['Sex'].map({'male': 0, 'female': 1})
     
-    # Create Family Size feature
     data['FamilySize'] = data['SibSp'] + data['Parch'] + 1
 
-    # Simplify Cabin to whether it's known or unknown
     data['CabinKnown'] = data['Cabin'].apply(lambda x: 0 if x == 'Unknown' else 1)
 
-    # One-hot encode Embarked
     data = pd.get_dummies(data, columns=['Embarked'], prefix='Embarked', drop_first=True)
 
     return data
 
 def select_features(data):
-    # Define features and target variable
     features = ['Pclass', 'Sex', 'Age', 'Fare', 'FamilySize', 'CabinKnown', 
                 'Embarked_Q', 'Embarked_S']
     X = data[features]
@@ -80,38 +74,28 @@ def plot_survival_distribution(data):
     plt.show()
 
 def main():
-    # Load data
     train_data, test_data = load_data('data/train.csv', 'data/test.csv')
 
-    # Handle missing data
     train_data, test_data = handle_missing_data(train_data, test_data)
 
-    # Feature engineering
     train_data = feature_engineering(train_data)
     test_data = feature_engineering(test_data)
 
-    # Select features and split training data
     X, y = select_features(train_data)
     X_test, _ = select_features(test_data)
     X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.2, random_state=42)
 
-    # Train the decision tree model
     model = train_decision_tree(X_train, y_train)
 
-    # Evaluate the model
     accuracy = evaluate_model(model, X_val, y_val)
     print(f"Validation Accuracy: {accuracy:.2f}")
 
-    # Make predictions on test data
     test_data = make_predictions(model, test_data, X.columns)
 
-    # Plot feature importance
     plot_feature_importance(model, X.columns)
 
-    # Plot survival distribution
     plot_survival_distribution(train_data)
 
-    # Output result summary
     survived_count = test_data['Survived'].sum()
     total_count = len(test_data)
     print(f"Out of {total_count} passengers, {survived_count} are predicted to survive.")
