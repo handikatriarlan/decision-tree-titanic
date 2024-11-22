@@ -115,5 +115,5 @@ Visualizes survival rates for male and female passengers.
 
 ## Acknowledgements
 
-- Titanic dataset is provided by [Kaggle](https://www.kaggle.com/datasets/heptapod/titanic).
+- Titanic dataset is provided by [Kaggle](https://www.kaggle.com/competitions/titanic/overview).
 - Scikit-learn for the machine learning tools and algorithms.
