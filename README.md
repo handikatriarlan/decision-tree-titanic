@@ -48,7 +48,7 @@ cd decision-tree-titanic
 3. Run the main Python script to train the decision tree model and make predictions:
 
 ```bash
-python src/decision_tree_model.py
+python src/main.py
 ```
 
 This script:
