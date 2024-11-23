@@ -6,12 +6,12 @@ This repository contains a machine learning project focused on predicting the su
 
 The goal of this project is to predict whether a passenger survived or not based on various features such as:
 
-- Gender
-- Age
-- Passenger class (`Pclass`)
-- Fare
-- Number of siblings/spouses aboard (`SibSp`)
-- Number of parents/children aboard (`Parch`)
+-   Gender
+-   Age
+-   Passenger class (`Pclass`)
+-   Fare
+-   Number of siblings/spouses aboard (`SibSp`)
+-   Number of parents/children aboard (`Parch`)
 
 The model is implemented using the Decision Tree algorithm from Scikit-learn. It works by recursively partitioning the dataset into subsets based on the most significant features, ultimately producing a tree structure that predicts survival.
 
@@ -19,11 +19,27 @@ The model is implemented using the Decision Tree algorithm from Scikit-learn. It
 
 To run this project, ensure the following Python libraries are installed:
 
-- `pandas`
-- `numpy`
-- `scikit-learn`
-- `matplotlib`
-- `seaborn`
+-   `pandas`
+-   `numpy`
+-   `scikit-learn`
+-   `matplotlib`
+-   `seaborn`
+
+## How to Run
+
+### 1. Clone the Repository:
+
+```bash
+git clone https://github.com/handikatriarlan/decision-tree-titanic.git
+```
+
+### 2. Navigate to the Project Directory:
+
+```bash
+cd decision-tree-titanic
+```
+
+### 3. Install Dependencies:
 
 You can install these dependencies using the following command:
 
@@ -31,77 +47,55 @@ You can install these dependencies using the following command:
 pip install -r requirements.txt
 ```
 
-## How to Run
-
-1. Clone the repository:
-
-```bash
-git clone https://github.com/handikatriarlan/decision-tree-titanic.git
-```
-
-2. Navigate to the project directory:
-
-```bash
-cd decision-tree-titanic
-```
-
-3. Run the main Python script to train the decision tree model and make predictions:
+### 4. Run the Main Python Script
 
 ```bash
 python src/main.py
 ```
 
-This script:
-
-- Loads and preprocesses the Titanic dataset.
-- Handles missing values.
-- Trains a Decision Tree Classifier.
-- Evaluates the model on a validation set.
-- Saves the trained model and generates visualizations.
-
 ## Features
 
 **1. Data Preprocessing**:
 
-- Handles missing data in critical columns like `Age` and `Fare` using median imputation.
-- Encodes categorical features, such as `Sex`, into numerical values (`male = 0`, `female = 1`).
+-   Handles missing data in critical columns like `Age` and `Fare` using median imputation.
+-   Encodes categorical features, such as `Sex`, into numerical values (`male = 0`, `female = 1`).
 
 **2. Decision Tree Classifier**
 
-- Implements a Decision Tree algorithm to learn survival patterns.
-- Features include limiting tree depth (`max_depth`) for generalization and avoiding overfitting.
+-   Implements a Decision Tree algorithm to learn survival patterns.
+-   Features include limiting tree depth (`max_depth`) for generalization and avoiding overfitting.
 
 **3. Model Evaluation**
 
-- Evaluates performance using metrics such as:
-  - Accuracy
-  - Precision
-  - Recall
-  - F1-score
-- Outputs a classification report and confusion matrix.
+-   Evaluates performance using metrics such as:
+    -   Accuracy
+    -   Precision
+    -   Recall
+    -   F1-score
+-   Outputs a classification report and confusion matrix.
 
 **4. Visualizations**
 
-- Feature Importance Chart:
-  - Highlights how features like `Sex` and `Age` significantly impact survival prediction.
-- Survival Distribution by Gender:
-  - Displays survival rates among male and female passengers, emphasizing historical patterns.
+-   Feature Importance Chart:
+    -   Highlights how features like `Sex` and `Age` significantly impact survival prediction.
+-   Survival Distribution by Gender:
+    -   Displays survival rates among male and female passengers, emphasizing historical patterns.
 
 ## Results
 
 The Decision Tree model achieved an accuracy of approximately 80% on the validation dataset, with the following key insights:
 **1. Women and Children First**:
 
-- Gender (`Sex`) is the most influential feature, followed by passenger age.
-- Female passengers and younger individuals had higher survival rates.
+-   Gender (`Sex`) is the most influential feature, followed by passenger age.
+-   Female passengers and younger individuals had higher survival rates.
 
 **2. Passenger Class and Fare**:
 
-- Passengers in higher classes (`Pclass = 1`) had better survival chances.
+-   Passengers in higher classes (`Pclass = 1`) had better survival chances.
 
 **3. Feature Importance**:
 
-- The `Sex` feature contributes most significantly to the decision tree's predictions, underscoring its critical role in the Titanic survival context.
+-   The `Sex` feature contributes most significantly to the decision tree's predictions, underscoring its critical role in the Titanic survival context.
 
 ## Visualization
 
@@ -115,5 +109,5 @@ Visualizes survival rates for male and female passengers.
 
 ## Acknowledgements
 
-- Titanic dataset is provided by [Kaggle](https://www.kaggle.com/competitions/titanic/overview).
-- Scikit-learn for the machine learning tools and algorithms.
+-   Titanic dataset is provided by [Kaggle](https://www.kaggle.com/competitions/titanic/overview).
+-   Scikit-learn for the machine learning tools and algorithms.
