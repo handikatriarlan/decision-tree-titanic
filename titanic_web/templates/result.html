@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2A4365',
+                        secondary: '#4299E1',
+                        accent: '#EBF8FF',
+                        neutral: '#F7FAFC',
+                        dark: '#1A365D'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gradient-to-br from-primary via-secondary to-primary min-h-screen">
+    <div class="container mx-auto px-4 py-16 pt-40">
+        <div class="max-w-xl mx-auto">
+            <div class="bg-white/95 rounded-3xl shadow-2xl p-8 backdrop-blur-sm">
+                <h1 class="text-4xl font-bold text-primary mb-8 text-center">Prediction Result</h1>
+
+                <div class="bg-accent rounded-xl p-8 mb-8 border border-secondary/30">
+                    <div class="text-center space-y-4">
+                        <p class="text-xl text-primary/80">Passenger's Fate:</p>
+                        {% if result == "Not Survived" %}
+                        <p class="text-4xl font-bold text-red-500">
+                            {{ result }}
+                        </p>
+                        {% else %}
+                        <p
+                            class="text-4xl font-bold bg-gradient-to-r from-primary to-secondary text-transparent bg-clip-text">
+                            {{ result }}
+                        </p>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <a href="/" class="block w-full text-center bg-gradient-to-r from-primary to-secondary text-white py-4 px-8 
+                          rounded-xl text-lg font-medium hover:from-secondary hover:to-primary transition-all duration-300 
+                          transform hover:-translate-y-1 hover:shadow-lg">
+                    Make Another Prediction
+                </a>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center mt-8 text-white/80 pb-8">
+        <a href="https://github.com/handikatriarlan/decision-tree-titanic.git"
+            class="inline-block text-white hover:text-accent transition-all duration-400 underline decoration-dotted transform hover:-translate-y-1"
+            target="_blank" rel="noopener noreferrer">
+            Dive into the source code →
+        </a>
+    </footer>
+</body>
+
+</html>
